@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 23:18:21 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/03/19 18:34:10 by rdutenke         ###   ########.fr       */
+/*   Updated: 2022/03/19 19:57:32 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,58 @@ int main(void)
 	{
 		std::cerr << e.what() << '\n';
 	}
+
+	std::cout << "Test - 4" << std::endl;
+	Span  test5 = Span(10);
+	std::vector<int> vec;
+	int i;
+
+	i = 0;
+	while (i < 5)
+	{
+		test5.addNumber(i);
+		i++;
+	}
+	i = 5;
+	while (i < 10)
+	{
+		vec.push_back(i);
+		i++;
+	}
+	std::vector<int>::iterator first = vec.begin();
+	std::vector<int>::iterator last = vec.end() - 1;
+
+	test5.addNumber(first, last);
+	
+	try
+	{
+		std::cout << test5.shortestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		std::cout << test5.longestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	test5.addNumber(first, last);
+
+
+	std::cout << "Test - 5" << std::endl;
+	Span sp = Span(5);
+	sp.addNumber(6);
+	sp.addNumber(3);
+	sp.addNumber(17);
+	sp.addNumber(9);
+	sp.addNumber(11);
+	std::cout << sp.shortestSpan() << std::endl;
+	std::cout << sp.longestSpan() << std::endl;
 	
 	return(0);
 }

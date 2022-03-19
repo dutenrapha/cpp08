@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 22:15:58 by rdutenke          #+#    #+#             */
-/*   Updated: 2022/03/19 19:10:05 by rdutenke         ###   ########.fr       */
+/*   Updated: 2022/03/19 19:48:34 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,27 @@ void	Span::addNumber(int n)
 		}
 			
 		this->_array->push_back(n);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+}
+
+void	Span::addNumber(std::vector<int>::iterator first, std::vector<int>::iterator last)
+{
+	try
+	{
+		while (first != last)
+		{
+			if (this->_array->size() == this->_N)
+			{
+				throw IsFilled();
+			}
+			this->_array->push_back(*first);
+			first++;
+		}
+		this->_array->push_back(*last);
 	}
 	catch(const std::exception& e)
 	{
